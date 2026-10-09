@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Trilho — o erro nomeado, questão por questão, para o ENEM</title>
+<meta name="description" content="O gabarito mostra qual era a alternativa certa. O Trilho mostra por que você marcou a errada e treina exatamente isso, todo dia, com questões oficiais do ENEM.">
+<meta property="og:title" content="Trilho — o erro nomeado, questão por questão, para o ENEM">
+<meta property="og:description" content="O gabarito mostra qual era a alternativa certa. O Trilho mostra por que você marcou a errada e treina exatamente isso, todo dia.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#5B3FD8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tinta: #171225; --tinta2: #5C5470; --tinta3: #6B6480;
+    --bg: #F4F2FB; --card: #FFFFFF; --linha: #E8E4F2;
+    --roxo: #5B3FD8; --roxoE: #3D2A99; --roxoL: #EDE8FF;
+    --verde: #12B981; --verdeL: #E3F8F0; --verdeT: #0A7A55;
+    --coralL: #FFEBE8; --coralT: #B33A28;
+    --reguaL: #EDEAF6; --tracejo: #C9C3DC; --lilas: #C9BEFF;
+    --display: "Bricolage Grotesque", system-ui, sans-serif;
+    --texto: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--tinta); font-family: var(--texto);
+    font-size: 16px; line-height: 1.55; padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(36px, 8.6vw, 62px); font-weight: 800; letter-spacing: -0.045em; line-height: 1; }
+  h2 { font-size: clamp(30px, 6vw, 42px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; }
+  h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+  p { margin: 0 0 1em; } p:last-child { margin-bottom: 0; }
+  a { color: inherit; }
+  .w { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .estreito { max-width: 740px; }
+  section { padding: 56px 0; border-top: 1px solid var(--linha); }
+  .kicker { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--roxo); margin-bottom: 14px; }
+  .lede { font-size: 17px; color: var(--tinta2); max-width: 640px; margin-top: 12px; }
+  .cabeca { margin-bottom: 30px; }
+  .er { font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--tinta3); }
+
+  /* Botão: 52 px, raio 14, roxo. Verde nunca vira botão. */
+  .botao { display: inline-flex; align-items: center; justify-content: center; height: 52px;
+    padding: 0 26px; border-radius: 14px; background: var(--roxo); color: #fff; border: 0;
+    font-size: 15.5px; font-weight: 700; text-decoration: none; cursor: pointer; transition: background .15s; }
+  .botao:hover { background: var(--roxoE); }
+  .botao.claro { background: #fff; color: var(--roxoE); }
+  .botao.claro:hover { background: var(--roxoL); }
+  .botao:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--tinta); outline-offset: 3px; }
+  .roxo .botao:focus-visible { outline-color: #fff; }
+  .micro { font-size: 13.5px; color: var(--tinta3); margin-top: 12px; }
+
+  /* Topo e marca: símbolo + nome em texto */
+  .topo { padding: 16px 0; }
+  .topo .w { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .marca { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; min-height: 44px; }
+  .marca svg { height: 36px; width: auto; display: block; }
+  .marca span { font-family: var(--display); font-weight: 800; font-size: 29px; letter-spacing: -0.045em; line-height: 1; }
+  .topo .entrar { font-size: 14.5px; font-weight: 700; color: var(--roxoE); text-decoration: none; min-height: 44px;
+    display: inline-flex; align-items: center; padding: 0 16px; border: 1.5px solid var(--linha); border-radius: 14px; background: #fff; }
+
+  /* Abertura */
+  .abertura { padding: 36px 0 60px; border-top: 0; }
+  .abertura .w { display: grid; gap: 40px; align-items: center; }
+  .abertura h1 em { font-style: normal; color: var(--roxo); }
+  .abertura .lede { margin: 20px 0 26px; max-width: 34em; }
+  .assinatura { margin-top: 30px; font-family: var(--display); font-weight: 800; font-size: 19px; letter-spacing: -0.035em; color: var(--tinta2); }
+
+  /* Peça da abertura: cartão da sessão (roxo fundo) e a régua da semana */
+  .peca { background: var(--card); border: 1px solid var(--linha); border-radius: 20px; padding: 16px; max-width: 400px; width: 100%; justify-self: center; }
+  .sessao { background: var(--roxoE); color: #fff; border-radius: 20px; padding: 20px; }
+  .sessao .er { color: var(--lilas); }
+  .sessao .tit { font-family: var(--display); font-weight: 800; letter-spacing: -0.035em; font-size: 27px; line-height: 1.05; margin: 8px 0 6px; }
+  .sessao .sub { font-size: 13px; color: var(--lilas); margin-bottom: 18px; }
+  .sessao .botao { width: 100%; pointer-events: none; }
+  .semana { padding: 16px 4px 4px; }
+  .semana .linha { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .semana b { font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: -0.02em; }
+  .dias { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .dia { height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: var(--reguaL); }
+  .dia.cumprido { background: var(--verde); }
+  .dia.parcial { background: linear-gradient(to top, var(--verde) 50%, var(--reguaL) 50%); }
+  .dia.hoje { border: 2px solid var(--roxo); }
+  .dia.futuro { border: 1.5px dashed var(--tracejo); }
+  .legenda { font-size: 12px; color: var(--tinta3); margin-top: 10px; text-align: center; }
+
+  /* Fundos */
+  .branco { background: var(--card); }
+  .escuro { background: var(--tinta); color: #fff; border-top: 0; }
+  .escuro .kicker { color: var(--lilas); }
+  .escuro p { color: #D6D0E6; } .escuro strong { color: #fff; }
+  .roxo { background: var(--roxoE); color: #fff; border-top: 0; }
+  .roxo .kicker { color: var(--lilas); }
+  .roxo p { color: #E5DEFF; }
+  .prosa p { font-size: 17px; }
+  .prosa .frase { font-family: var(--display); font-weight: 800; font-size: 23px; letter-spacing: -0.035em; line-height: 1.15; color: var(--tinta); margin: 26px 0; }
+  .escuro .prosa .frase { color: #fff; }
+
+  /* Bloco: cartão comum, raio 16 */
+  .grade { display: grid; gap: 14px; }
+  .bloco { background: var(--card); border: 1px solid var(--linha); border-radius: 16px; padding: 20px 22px; }
+  .bloco h3 { margin-bottom: 7px; }
+  .bloco p { font-size: 14.5px; color: var(--tinta2); line-height: 1.55; }
+  .branco .bloco { background: var(--bg); }
+
+  /* As quatro voltas: cartão de destaque, raio 20 */
+  .voltas { display: grid; gap: 14px; }
+  .volta { background: var(--card); border: 1px solid var(--linha); border-radius: 20px; padding: 22px; }
+  .volta .topo-v { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .parada { flex: none; width: 24px; height: 24px; border-radius: 12px; background: var(--roxo); color: #fff; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+  .volta .nome { font-family: var(--display); font-weight: 800; font-size: 27px; letter-spacing: -0.035em; line-height: 1.05; }
+  .volta .pergunta { font-size: 14px; font-weight: 600; color: var(--roxo); margin: 4px 0 12px; }
+  .volta p { color: var(--tinta2); font-size: 14.5px; }
+  .mini { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--linha); display: grid; gap: 12px; }
+  .item { display: flex; align-items: center; gap: 10px; }
+  .item .corpo { flex-grow: 1; }
+  .item .corpo b { display: block; font-size: 14px; font-weight: 600; }
+  .item .corpo span { font-size: 12px; color: var(--tinta3); }
+  .area { font-family: var(--mono); flex: none; font-size: 10.5px; font-weight: 600; color: var(--tinta2); background: #fff; border: 1px solid var(--linha); border-radius: 8px; padding: 3px 7px; }
+
+  /* Correção: alternativa e erro nomeado */
+  .correcao { display: grid; gap: 28px; align-items: start; }
+  .tela { background: var(--bg); border: 1px solid var(--linha); border-radius: 20px; padding: 16px; max-width: 420px; width: 100%; justify-self: center; }
+  .tela > .er { display: block; margin-bottom: 12px; }
+  .alt { display: flex; gap: 10px; align-items: center; padding: 9px 11px; border: 1.5px solid var(--linha); background: #fff; border-radius: 12px; margin-bottom: 8px; }
+  .alt .letra { flex: none; width: 26px; height: 26px; border-radius: 8px; background: var(--bg); color: var(--tinta); font-size: 12.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .alt b { display: block; font-size: 14px; font-weight: 600; }
+  .alt small { display: block; font-size: 11.5px; color: var(--tinta2); }
+  .alt.correta { border-color: var(--verde); background: var(--verdeL); }
+  .alt.correta .letra { background: var(--verde); color: #fff; }
+  .alt.errada { border-color: var(--coralT); background: var(--coralL); }
+  .alt.errada .letra { background: var(--coralT); color: #fff; }
+  .nomeado { background: var(--tinta); color: #fff; border-radius: 16px; padding: 14px 16px; margin-top: 12px; }
+  .nomeado .er { color: var(--lilas); }
+  .nomeado .tit { font-family: var(--display); font-weight: 800; letter-spacing: -0.035em; font-size: 17px; margin-top: 6px; line-height: 1.15; }
+  .nomeado .sub { font-size: 12.5px; color: var(--lilas); margin-top: 8px; line-height: 1.45; }
+  .vencida { background: var(--verdeL); border-radius: 16px; padding: 12px 14px; margin-top: 8px; }
+  .vencida .er { color: var(--verdeT); }
+  .vencida .tit { font-size: 13.5px; font-weight: 700; margin-top: 4px; }
+  .vencida .sub { font-size: 12px; color: var(--verdeT); margin-top: 2px; }
+  .lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .lista li { padding-left: 22px; position: relative; color: var(--tinta2); }
+  .lista li::before { content: ""; position: absolute; left: 0; top: .32em; width: 6px; height: 16px; border-radius: 3px; background: var(--roxo); }
+  .lista strong { color: var(--tinta); }
+
+  /* Simulado: faixa da nota */
+  .tres h3 + p { margin-top: 8px; font-size: 15px; }
+  .faixa { margin-top: 26px; background: #fff; color: var(--tinta); border-radius: 16px; padding: 16px 18px; max-width: 420px; }
+  .faixa .linha { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--linha); }
+  .faixa .linha b { font-size: 14px; font-weight: 600; }
+  .faixa .nota { font-family: var(--mono); font-size: 13px; font-weight: 600; }
+  .faixa .cont { font-family: var(--mono); font-size: 12px; color: var(--tinta3); }
+  .roxo .faixa p { color: var(--tinta3); font-size: 12px; margin-top: 10px; }
+
+  /* Oferta */
+  .oferta { background: var(--card); border: 2px solid var(--roxo); border-radius: 20px; padding: 26px 22px; max-width: 560px; margin: 0 auto; }
+  .selo { display: inline-block; font-family: var(--mono); background: var(--roxoL); color: var(--roxoE); font-size: 10.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; border-radius: 10px; }
+  .preco { font-family: var(--display); font-weight: 800; letter-spacing: -0.045em; font-size: 60px; line-height: 1; margin: 16px 0 4px; }
+  .preco small { font-family: var(--texto); font-weight: 500; font-size: 16px; letter-spacing: 0; color: var(--tinta2); white-space: nowrap; }
+  @media (max-width: 420px) { .preco { font-size: 50px; } }
+  .oferta .lista { margin: 22px 0; font-size: 15px; }
+  .oferta .lista li { color: var(--tinta); }
+  .oferta .botao { width: 100%; }
+  .miudo { font-size: 12.5px; color: var(--tinta3); margin-top: 14px; }
+  .garantia { max-width: 560px; margin: 14px auto 0; background: var(--roxoL); border-radius: 16px; padding: 20px 22px; color: var(--roxoE); }
+  .garantia h3 { margin-bottom: 7px; }
+  .garantia p { font-size: 14.5px; }
+
+  /* Perguntas */
+  details { background: var(--card); border: 1px solid var(--linha); border-radius: 16px; margin-bottom: 10px; }
+  summary { list-style: none; cursor: pointer; padding: 16px 50px 16px 20px; font-weight: 600; font-size: 15.5px; position: relative; min-height: 44px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 22px; font-weight: 400; color: var(--roxo); line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { padding: 0 20px 18px; color: var(--tinta2); font-size: 14.5px; }
+
+  /* Fechamento e rodapé */
+  .fecho { text-align: center; }
+  .fecho p { max-width: 32em; margin-left: auto; margin-right: auto; }
+  .fecho .botao { margin-top: 12px; }
+  footer { padding: 40px 0 32px; border-top: 1px solid var(--linha); font-size: 13px; color: var(--tinta3); }
+  footer p { margin-bottom: .8em; }
+  footer a { color: var(--tinta2); display: inline-block; padding: 12px 0; }
+
+  /* Barra fixa no celular, com o respiro da borda do aparelho */
+  .barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--card); border-top: 1px solid var(--linha); padding: 10px 20px calc(10px + env(safe-area-inset-bottom)); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .barra .valor { font-size: 12.5px; color: var(--tinta3); line-height: 1.3; }
+  .barra .valor strong { display: block; font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; font-size: 17px; color: var(--tinta); }
+  .barra .botao { height: 48px; padding: 0 22px; }
+
+  @media (min-width: 860px) {
+    body { padding-bottom: 0; }
+    .w { padding: 0 24px; }
+    section { padding: 84px 0; }
+    .abertura { padding: 56px 0 92px; }
+    .abertura .w { grid-template-columns: 1.15fr .85fr; gap: 56px; }
+    .barra { display: none; }
+    .topo { padding: 22px 0; }
+    .marca { gap: 12px; }
+    .marca svg { height: 44px; }
+    .marca span { font-size: 35px; }
+    .g2, .voltas { grid-template-columns: 1fr 1fr; }
+    .g3 { grid-template-columns: repeat(3, 1fr); }
+    .correcao { grid-template-columns: 1.05fr .95fr; gap: 56px; }
+    .lede { font-size: 18px; } .prosa p { font-size: 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .botao { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="w">
+    <a class="marca" href="#" aria-label="Trilho">
+      <svg viewBox="0 0 82 30" fill="none" aria-hidden="true">
+        <path d="M3 10 H79" stroke="#C9BEFF" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M3 20 H79" stroke="#C9BEFF" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M3 10 H41" stroke="#5B3FD8" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M3 20 H41" stroke="#5B3FD8" stroke-width="3.5" stroke-linecap="round"/>
+        <rect x="9" y="4" width="4.5" height="22" rx="2.25" fill="#5B3FD8"/>
+        <rect x="21" y="4" width="4.5" height="22" rx="2.25" fill="#5B3FD8"/>
+        <rect x="33" y="4" width="4.5" height="22" rx="2.25" fill="#12B981"/>
+        <rect x="45" y="4" width="4.5" height="22" rx="2.25" fill="#C9BEFF"/>
+        <rect x="57" y="4" width="4.5" height="22" rx="2.25" fill="#C9BEFF"/>
+        <rect x="69" y="4" width="4.5" height="22" rx="2.25" fill="#C9BEFF"/>
+      </svg>
+      <span>trilho</span>
+    </a>
+    <a class="entrar" href="#oferta">Assinar</a>
+  </div>
+</header>
+
+<main>
+
+<section class="abertura">
+  <div class="w">
+    <div>
+      <div class="kicker">Treino para o ENEM</div>
+      <h1>O gabarito disse qual era a certa. <em>O Trilho diz por que você marcou a errada.</em></h1>
+      <p class="lede">O Trilho lê as suas respostas, nomeia o erro por trás de cada alternativa errada e monta o que você treina hoje. Com questões oficiais do ENEM, pelo Método das Quatro Voltas.</p>
+      <a class="botao js-checkout" href="#oferta">Assinar o Trilho</a>
+      <p class="micro">R$ 29,90 por mês. 7 dias para testar. Cancele quando quiser.</p>
+      <p class="assinatura">Você constrói. A gente mostra por onde.</p>
+    </div>
+    <div class="peca" aria-hidden="true">
+      <div class="sessao">
+        <span class="er">Obra · hoje</span>
+        <div class="tit">Estequiometria</div>
+        <div class="sub">12 questões · quatro já fecham o dia</div>
+        <span class="botao claro">Começar agora</span>
+      </div>
+      <div class="semana">
+        <div class="linha"><b>Sua semana</b><span class="er">2 dias cumpridos</span></div>
+        <div class="dias">
+          <span class="dia cumprido"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <span class="dia cumprido"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <span class="dia parcial"></span>
+          <span class="dia hoje"></span>
+          <span class="dia futuro"></span>
+          <span class="dia futuro"></span>
+          <span class="dia futuro"></span>
+        </div>
+        <div class="legenda">Dia cheio é dia cumprido. Meio dia também conta.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="branco">
+  <div class="w estreito prosa">
+    <div class="kicker">O problema</div>
+    <div class="cabeca"><h2>Você não estudou pouco. Estudou sem saber o que faltava.</h2></div>
+    <p>Quem vai prestar o ENEM de novo costuma repetir o ano anterior com mais horas: mais aula, mais lista, mais simulado conferido pelo gabarito.</p>
+    <p>O gabarito corrige a questão. Ele mostra a letra certa e para aí. Não diz por que você marcou a outra, nem se foi o mesmo raciocínio que errou três questões antes.</p>
+    <p>Sem essa informação, o plano do ano é palpite. Você revisa a matéria de que gosta, adia a que assusta e descobre em novembro se acertou a aposta.</p>
+  </div>
+</section>
+
+<section class="escuro">
+  <div class="w estreito prosa">
+    <div class="kicker">O erro nomeado</div>
+    <div class="cabeca"><h2>A alternativa certa diz o que marcar. A errada mostra como você pensa.</h2></div>
+    <p>Toda questão do ENEM tem uma resposta certa e quatro erradas. As quatro não estão ali por acaso. Cada uma atrai um raciocínio específico: a unidade convertida na hora errada, a leitura que parou na primeira frase, a fórmula certa aplicada ao dado errado.</p>
+    <p class="frase">Saber qual era a certa corrige aquela questão. Saber por que você marcou a errada corrige o raciocínio que vai errar a próxima.</p>
+    <p>No Trilho, cada alternativa errada de cada questão foi analisada por uma pessoa e ligada ao erro que costuma levar até ela. É o <strong>erro nomeado</strong>. Quando você marca a B, o app não responde só "era a D". Ele mostra o raciocínio que costuma levar à B e onde ele se desvia.</p>
+    <p>É como revisar a prova com o professor do lado, questão por questão, em vez de receber só a nota.</p>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="w">
+    <div class="kicker">O método</div>
+    <div class="cabeca">
+      <h2>O Método das Quatro Voltas</h2>
+      <p class="lede">Quatro voltas, e a quarta leva de volta à segunda.</p>
+    </div>
+    <div class="voltas">
+      <article class="volta">
+        <div class="topo-v"><span class="parada">1</span><span class="er">Volta 1</span></div>
+        <div class="nome">Sondagem</div>
+        <div class="pergunta">Onde você está.</div>
+        <p>O ponto de partida são respostas reais. Você envia o gabarito da prova do ENEM que já fez, por foto ou digitando, e o Trilho cruza cada alternativa marcada com o erro que ela representa. São 180 respostas dadas em cinco horas, com a prova valendo. Nenhum teste feito em casa reproduz essa condição.</p>
+        <p>Quem não tem a prova entra por um diagnóstico curto com questões oficiais. A devolutiva sai em ordem de prioridade, não em nota.</p>
+      </article>
+      <article class="volta">
+        <div class="topo-v"><span class="parada">2</span><span class="er">Volta 2</span></div>
+        <div class="nome">Rota</div>
+        <div class="pergunta">Por onde começar.</div>
+        <p>O que estudar primeiro é conta, não opinião. Quatro fatores decidem a fila: o peso do tópico na prova, o quanto falta para você dominá-lo, o quanto ele está ao seu alcance agora e uma margem para explorar o que ainda não foi medido.</p>
+        <p>Você para de estudar o que já sabe e o que ainda está fora de alcance.</p>
+        <div class="mini" aria-hidden="true">
+          <div class="item"><span class="parada">1</span><div class="corpo"><b>Estequiometria</b><span>primeira parada</span></div><span class="area">CN</span></div>
+          <div class="item"><span class="parada">2</span><div class="corpo"><b>Função afim</b><span>segunda parada</span></div><span class="area">MT</span></div>
+          <div class="item"><span class="parada">3</span><div class="corpo"><b>Leitura de gráfico</b><span>terceira parada</span></div><span class="area">CH</span></div>
+        </div>
+      </article>
+      <article class="volta">
+        <div class="topo-v"><span class="parada">3</span><span class="er">Volta 3</span></div>
+        <div class="nome">Obra</div>
+        <div class="pergunta">O que fazer hoje.</div>
+        <p>Doze questões por dia, uma por vez, em 30 a 40 minutos. Cronômetro rodando, erro nomeado na correção e resolução completa.</p>
+        <p>No dia ruim, quatro questões já fecham o dia.</p>
+      </article>
+      <article class="volta">
+        <div class="topo-v"><span class="parada">4</span><span class="er">Volta 4</span></div>
+        <div class="nome">Vistoria</div>
+        <div class="pergunta">O que mudou.</div>
+        <p>A resposta de hoje muda o plano de amanhã. O erro que se repete sobe na fila, o tópico dominado sai, e o ciclo volta à Rota com evidência nova.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="branco">
+  <div class="w">
+    <div class="correcao">
+      <div>
+        <div class="kicker">A correção, de perto</div>
+        <div class="cabeca"><h2>O que você vê quando erra</h2></div>
+        <ul class="lista">
+          <li><strong>A alternativa que você marcou</strong>, com o erro nomeado, em uma frase.</li>
+          <li><strong>Como pensar a questão</strong>, em três passos.</li>
+          <li><strong>Por que cada alternativa está certa ou errada.</strong> As cinco.</li>
+          <li><strong>A chave do método:</strong> o que levar desta questão para a próxima do mesmo tipo.</li>
+        </ul>
+        <p style="margin-top:24px;color:var(--tinta2)">As resoluções foram escritas e revisadas por pessoas, uma a uma. Nenhuma é gerada por inteligência artificial na hora.</p>
+      </div>
+      <div class="tela" aria-label="Exemplo ilustrativo da tela de correção">
+        <span class="er">Exemplo ilustrativo</span>
+        <div class="alt"><span class="letra">A</span><div><b>2 kg</b></div></div>
+        <div class="alt errada"><span class="letra">B</span><div><b>3 kg</b><small>sua marcação</small></div></div>
+        <div class="alt correta"><span class="letra">C</span><div><b>6 kg</b><small>a resposta</small></div></div>
+        <div class="nomeado">
+          <span class="er">Erro nomeado</span>
+          <div class="tit">Usar a massa molar do H, não a do H₂</div>
+          <div class="sub">Esse erro costuma acontecer quando a conta parte do átomo e a equação pede a molécula.</div>
+        </div>
+        <div class="vencida">
+          <span class="er">Erro vencido</span>
+          <div class="tit">Inverter a proporção da equação</div>
+          <div class="sub">pegou você na terça · hoje, não</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <div class="kicker">O que tem dentro</div>
+    <div class="cabeca"><h2>Tudo o que entra na assinatura</h2></div>
+    <div class="grade g2">
+      <article class="bloco">
+        <h3>Questões oficiais do ENEM</h3>
+        <p>As provas dos últimos 12 anos do ENEM: mais de 2 mil questões oficiais, nas quatro áreas, cada uma revisada por pessoas antes de entrar. Há plataformas que anunciam dezenas de milhares de questões, misturando vestibulares e questões próprias. Volume impressiona. Fidelidade treina. Você treina com a prova que vai fazer.</p>
+      </article>
+      <article class="bloco">
+        <h3>A sessão do dia, pronta</h3>
+        <p>Você abre o app e a Obra de hoje está montada. Não há o que escolher.</p>
+      </article>
+      <article class="bloco">
+        <h3>O dia ruim também conta</h3>
+        <p>Plano que só vale inteiro acaba no primeiro dia cansado. No Trilho, quatro questões já fecham o dia, e a sequência continua.</p>
+      </article>
+      <article class="bloco">
+        <h3>Revisão no tempo certo</h3>
+        <p>O que você errou volta dias depois, de preferência em outra questão do mesmo assunto, para testar o método e não a memória da resposta.</p>
+      </article>
+      <article class="bloco">
+        <h3>Seus erros recorrentes</h3>
+        <p>Uma tela reúne os erros nomeados que mais se repetem nas suas respostas.</p>
+      </article>
+      <article class="bloco">
+        <h3>Sua evolução por área</h3>
+        <p>O app mostra a ordem: qual área está mais frágil, qual vem depois, o que subiu e o que caiu. Ele não mostra percentual de domínio, porque essa estimativa tem margem de erro medida. O dado confiável é a ordem.</p>
+      </article>
+      <article class="bloco">
+        <h3>No celular, pelo navegador</h3>
+        <p>Não precisa baixar nada da loja.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="roxo">
+  <div class="w">
+    <div class="kicker">Simulado e curso</div>
+    <div class="cabeca"><h2>A vaga no curso que você escolheu</h2></div>
+    <div class="grade g3 tres">
+      <div>
+        <h3>Diga o curso e a universidade</h3>
+        <p>O Trilho usa os pesos que aquele curso dá a cada área no Sisu. Se Matemática pesa mais para você, ela ganha mais espaço na sua Rota.</p>
+      </div>
+      <div>
+        <h3>Faça um simulado por mês</h3>
+        <p>Cada simulado é de uma área e tem 45 questões, o tamanho de um bloco do ENEM, no ritmo da prova. A nota sai na escala do ENEM e vem em faixa, não em um número só, porque uma estimativa honesta tem margem.</p>
+      </div>
+      <div>
+        <h3>Veja a distância</h3>
+        <p>O app coloca a sua nota estimada ao lado do que o curso exige. A conta inclui a redação, com o peso que o curso dá a ela.</p>
+      </div>
+    </div>
+    <div class="faixa" aria-hidden="true">
+      <div class="linha"><b>Linguagens</b><span class="nota">612–668</span></div>
+      <div class="linha"><b>Matemática</b><span class="cont">faltam 7 questões</span></div>
+      <p>Exemplo ilustrativo. A nota vem em faixa; enquanto falta resposta, o app diz quantas faltam.</p>
+    </div>
+  </div>
+</section>
+
+<section class="branco" id="ponto-cego">
+  <div class="w estreito prosa">
+    <div class="kicker">Redação</div>
+    <div class="cabeca"><h2>Ponto Cego: o que você não enxerga no próprio texto</h2></div>
+    <p>A redação entra no mesmo ciclo. O seu texto faz o papel do gabarito.</p>
+    <p>Você envia uma redação por semana, por foto ou por texto. Em até 24 horas, ela volta com a nota de cada uma das cinco competências do ENEM, os trechos do seu texto que justificam cada nota e a <strong>lacuna nomeada</strong>: tese que não se sustenta, repertório que não cumpre função no argumento, proposta de intervenção sem agente. Junto vem o que treinar antes da próxima.</p>
+    <p class="frase">O mercado pontua o texto pronto. O Ponto Cego diz o que faltou nele.</p>
+    <div class="grade g2">
+      <div class="bloco">
+        <h3>Como a correção é feita</h3>
+        <p>Por inteligência artificial, seguindo a grade de correção do ENEM. Cada apontamento cita um trecho que está de fato na sua redação.</p>
+      </div>
+      <div class="bloco">
+        <h3>Em fase de testes</h3>
+        <p>O Ponto Cego é novo e continua sendo ajustado. A nota é uma estimativa para orientar o seu treino e pode ser diferente da nota que a banca do ENEM daria.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <div class="kicker">O que o Trilho não é</div>
+    <div class="cabeca"><h2>Três coisas que você não vai encontrar aqui</h2></div>
+    <div class="grade g3 tres">
+      <article class="bloco">
+        <h3>Videoaula</h3>
+        <p>O Trilho é treino, não aula. Ele funciona ao lado da escola, do cursinho ou do material que você já usa. Quando você erra, a resolução explica aquela questão e o método por trás dela.</p>
+      </article>
+      <article class="bloco">
+        <h3>Ranking</h3>
+        <p>Você não é comparado com ninguém.</p>
+      </article>
+      <article class="bloco">
+        <h3>Promessa de aprovação</h3>
+        <p>O Trilho não promete a vaga. Ele mostra o que está no caminho dela. As estimativas saem das suas respostas e podem errar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="branco">
+  <div class="w">
+    <div class="kicker">Para quem paga</div>
+    <div class="cabeca"><h2>Se você é pai, mãe ou responsável</h2></div>
+    <div class="grade g2">
+      <article class="bloco">
+        <h3>O que muda em relação ao ano passado</h3>
+        <p>O seu filho não vai repetir o mesmo estudo com mais horas. Ele parte das respostas que deu na prova e treina, todo dia, o que elas mostraram que falta.</p>
+      </article>
+      <article class="bloco">
+        <h3>Quanto custa</h3>
+        <p>Cursinho presencial nas capitais custa de R$ 500 a R$ 2.000 por mês. O Trilho custa R$ 29,90 por mês. Um ano inteiro sai por menos que o mês mais barato de cursinho.</p>
+      </article>
+      <article class="bloco">
+        <h3>Como a compra funciona</h3>
+        <p>Você assina, recebe um link por e-mail e cadastra o aluno: nome, e-mail e senha dele. Cada assinatura vale para um aluno.</p>
+      </article>
+      <article class="bloco">
+        <h3>Idade</h3>
+        <p>O aluno precisa ter 13 anos ou mais. A compra é feita por um adulto.</p>
+      </article>
+      <article class="bloco">
+        <h3>Dados</h3>
+        <p>O Trilho guarda as respostas do aluno para montar o treino. Não há anúncio, não há chat e não há contato entre alunos. O restante está na Política de Privacidade.</p>
+      </article>
+      <article class="bloco">
+        <h3>Sem fidelidade</h3>
+        <p>A assinatura é mensal e você cancela quando quiser, pela Hotmart. Há 7 dias para testar e pedir o dinheiro de volta.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="w">
+    <div class="oferta">
+      <span class="selo">Preço de lançamento</span>
+      <h2 style="margin-top:16px;font-size:30px">Assinatura do Trilho</h2>
+      <div class="preco">R$ 29,90 <small>por mês</small></div>
+      <ul class="lista">
+        <li>O Método das Quatro Voltas, da Sondagem à Vistoria</li>
+        <li>Mais de 2 mil questões oficiais, dos últimos 12 anos do ENEM, com resolução escrita e erro nomeado</li>
+        <li>A sessão do dia, pronta, com meta mínima</li>
+        <li>Revisão espaçada do que você errou</li>
+        <li>Um simulado por mês e o seu curso como alvo</li>
+        <li>Evolução por área e erros recorrentes</li>
+        <li>Ponto Cego: uma redação corrigida por semana</li>
+      </ul>
+      <a class="botao js-checkout" href="#oferta">Assinar o Trilho</a>
+      <p class="micro" style="text-align:center">Renova todo mês. Cancele quando quiser: o acesso continua até o fim do mês já pago.</p>
+      <p class="miudo">Preço de lançamento, válido para assinaturas feitas enquanto esta oferta estiver no ar. Quem assina agora mantém os R$ 29,90 enquanto a assinatura estiver ativa.</p>
+    </div>
+    <div class="garantia">
+      <h3>7 dias para testar</h3>
+      <p>Faça a Sondagem, cumpra as primeiras sessões e veja o erro nomeado funcionando. Se não for para você, peça o reembolso em até 7 dias depois da compra e receba todo o valor de volta.</p>
+      <p style="margin-top:10px;font-size:14px">Pagamento pela Hotmart. Uma assinatura, um aluno.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w estreito">
+    <div class="kicker">Perguntas frequentes</div>
+    <div class="cabeca"><h2>O que costumam perguntar</h2></div>
+
+    <details><summary>Não fiz o ENEM ainda. Serve para mim?</summary>
+      <p>Serve. Quem não tem um gabarito para enviar entra por um diagnóstico curto com questões oficiais, e o método segue igual.</p></details>
+    <details><summary>Fiz o ENEM e não lembro o que marquei. E agora?</summary>
+      <p>Você entra pelo diagnóstico curto com questões oficiais, e o método segue igual.</p></details>
+    <details><summary>Preciso baixar algum aplicativo?</summary>
+      <p>Não. O Trilho abre no navegador do celular ou do computador. Você pode adicionar à tela inicial e usar como um app.</p></details>
+    <details><summary>Quanto tempo por dia?</summary>
+      <p>De 30 a 40 minutos para as doze questões. No dia ruim, quatro questões já fecham o dia.</p></details>
+    <details><summary>Tem videoaula?</summary>
+      <p>Não. O Trilho é treino com correção explicada. Ele complementa a escola ou o cursinho.</p></details>
+    <details><summary>Dá para usar junto com o cursinho?</summary>
+      <p>Dá. O cursinho ensina o conteúdo. O Trilho mostra em que ponto desse conteúdo você erra.</p></details>
+    <details><summary>As questões são do ENEM mesmo?</summary>
+      <p>São. Todas vêm de provas oficiais do ENEM, com o texto conferido contra o caderno original.</p></details>
+    <details><summary>As resoluções são feitas por inteligência artificial?</summary>
+      <p>Não. Foram escritas e revisadas por pessoas. A ordem do que você treina também não é decidida por IA: é um cálculo com regras fixas, a partir das suas respostas. A exceção é a correção de redação do Ponto Cego, que é feita por IA.</p></details>
+    <details><summary>A nota da redação é a mesma que eu tiraria no ENEM?</summary>
+      <p>Não necessariamente. O Ponto Cego está em fase de testes: a nota é uma estimativa feita por inteligência artificial com a grade do ENEM. Ela serve para mostrar em qual competência você perde mais ponto, e pode ser diferente da nota da banca.</p></details>
+    <details><summary>Por que o app não mostra meu percentual de domínio?</summary>
+      <p>Porque esse número tem margem de erro, e um número errado em que você confia é pior que número nenhum. O que o app mostra com segurança é a ordem: o que está mais frágil e o que vem depois.</p></details>
+    <details><summary>E se eu faltar um dia?</summary>
+      <p>O plano se ajusta ao que você fez de fato. Dia perdido não vira uma pilha de questões atrasadas.</p></details>
+    <details><summary>Posso usar a mesma assinatura para dois filhos?</summary>
+      <p>Não. O treino é montado a partir das respostas de um aluno só. Cada aluno precisa da própria assinatura.</p></details>
+    <details><summary>Como funciona a garantia?</summary>
+      <p>Você tem 7 dias depois da compra para usar o Trilho. Se quiser desistir nesse prazo, pede o reembolso pela Hotmart e recebe todo o valor de volta.</p></details>
+    <details><summary>Como cancelo?</summary>
+      <p>Pela Hotmart, a qualquer momento. O acesso vai até o fim do mês que você já pagou.</p></details>
+    <details><summary>Se eu cancelar e voltar depois, perco meu histórico?</summary>
+      <p>Não. A conta e o histórico ficam guardados para você continuar de onde parou.</p></details>
+    <details><summary>O Trilho garante minha aprovação?</summary>
+      <p>Não. Ele mostra o que você errava e o que já corrigiu. O resultado depende do seu estudo.</p></details>
+  </div>
+</section>
+
+<section class="roxo fecho">
+  <div class="w estreito">
+    <h2>Chegue à prova sabendo o que você errava e o que já corrigiu</h2>
+    <p style="margin-top:20px">Os meses daqui até o ENEM podem ser uma repetição do ano passado com mais horas, ou podem começar pelas respostas que você já deu.</p>
+    <p>A primeira volta é a Sondagem. O dia de hoje fecha com quatro questões.</p>
+    <a class="botao claro js-checkout" href="#oferta">Assinar o Trilho</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="w">
+    <p>Trilho é um produto da Kopen Desenvolvimento Pessoal e Tecnologia Educacional Ltda., CNPJ 63.503.969/0001-03. Contato: <a href="mailto:contato@trilhoenem.com.br">contato@trilhoenem.com.br</a></p>
+    <p><a href="#" data-pendente="termos">Termos de Uso</a> · <a href="#" data-pendente="politica">Política de Privacidade</a></p>
+    <p>O Trilho não tem vínculo com o Inep nem com o Ministério da Educação. As questões do ENEM são provas públicas elaboradas pelo Inep.</p>
+  </div>
+</footer>
+
+<div class="barra">
+  <div class="valor"><strong>R$ 29,90 por mês</strong>7 dias para testar</div>
+  <a class="botao js-checkout" href="#oferta">Assinar</a>
+</div>
+
+<script>
+  // Link de pagamento da Hotmart. Vazio, os botões levam à seção da oferta.
+  var CHECKOUT_URL = '';
+  if (CHECKOUT_URL) {
+    document.querySelectorAll('#oferta .js-checkout').forEach(function (a) { a.href = CHECKOUT_URL; });
+  }
+</script>
+</body>
+</html>
