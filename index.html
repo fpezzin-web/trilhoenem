@@ -68,6 +68,33 @@
   .topo .entrar.login { background: transparent; border-color: transparent; }
   .topo .entrar.login:hover { border-color: var(--topoL); }
 
+  /* As telas do app (11/10/2026). Capturas reais, com dados de exemplo, numa moldura de
+     celular. A proporção é a da captura: 390 x 844. */
+  .fone { width: 100%; max-width: 300px; justify-self: center; margin: 0 auto; background: var(--tinta);
+    border-radius: 34px; padding: 9px; box-shadow: 0 18px 44px rgba(23, 18, 37, .18); }
+  .fone img { display: block; width: 100%; height: auto; aspect-ratio: 390 / 844; border-radius: 26px; background: var(--bg); }
+  .nota-telas { font-size: 12px; color: var(--tinta3); margin-top: 18px; text-align: center; }
+  .vitrine { display: grid; grid-auto-flow: column; grid-auto-columns: 78%; gap: 16px; overflow-x: auto;
+    scroll-snap-type: x mandatory; padding: 4px 20px 14px; margin: 0 -20px; -webkit-overflow-scrolling: touch; }
+  .vitrine figure { margin: 0; scroll-snap-align: center; }
+  .vitrine .fone { max-width: 270px; }
+  .vitrine figcaption { margin-top: 16px; text-align: center; }
+  .vitrine figcaption b { display: block; font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: -0.03em; }
+  .vitrine figcaption span { display: block; font-size: 13.5px; color: var(--tinta2); margin-top: 4px; line-height: 1.45; }
+
+  /* A comparação (11/10/2026). No celular cada linha é um cartão com três respostas; em tela
+     larga vira tabela de quatro colunas. */
+  .compara { display: grid; gap: 12px; }
+  .compara .linha { background: var(--card); border: 1px solid var(--linha); border-radius: 16px; padding: 16px; }
+  .compara .oque { font-family: var(--display); font-weight: 800; font-size: 17px; letter-spacing: -0.03em; margin-bottom: 10px; }
+  .compara .cel { font-size: 14px; color: var(--tinta2); padding: 7px 0; border-top: 1px solid var(--linha); }
+  .compara .cel b { display: block; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta3); margin-bottom: 2px; }
+  .compara .cel.trilho { color: var(--tinta); font-weight: 600; }
+  .compara .cel.trilho b { color: var(--roxo); }
+  .compara .topo-c { display: none; }
+  .fone video { display: block; width: 100%; height: auto; aspect-ratio: 390 / 844; border-radius: 26px; background: var(--bg); object-fit: cover; }
+  .pordia { font-size: 14px; color: var(--tinta2); margin: 2px 0 0; }
+
   /* Abertura */
   .abertura { padding: 36px 0 60px; border-top: 0; }
   .abertura .w { display: grid; gap: 40px; align-items: center; }
@@ -210,6 +237,19 @@
     .marca { gap: 12px; }
     .marca svg { height: 44px; }
     .marca span { font-size: 35px; }
+    .vitrine { grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); grid-auto-columns: auto; gap: 24px;
+      overflow: visible; padding: 0; margin: 0; }
+    .vitrine .fone { max-width: 240px; }
+    .abertura .fone { max-width: 320px; }
+    .compara { gap: 0; background: var(--card); border: 1px solid var(--linha); border-radius: 20px; overflow: hidden; }
+    .compara .linha, .compara .topo-c { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1.25fr; border: 0; border-radius: 0; padding: 0; background: none; }
+    .compara .linha { border-top: 1px solid var(--linha); }
+    .compara .topo-c > div { padding: 16px 18px; font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta3); }
+    .compara .topo-c > div:last-child { color: var(--roxo); background: var(--roxoL); }
+    .compara .oque { margin: 0; padding: 18px; font-size: 16px; }
+    .compara .cel { border: 0; padding: 18px; }
+    .compara .cel b { display: none; }
+    .compara .cel.trilho { background: var(--roxoL); }
     .g2, .voltas { grid-template-columns: 1fr 1fr; }
     .g3 { grid-template-columns: repeat(3, 1fr); }
     .correcao { grid-template-columns: 1.05fr .95fr; gap: 56px; }
@@ -256,31 +296,66 @@
       <p class="micro">R$ 29,90 por mês. 7 dias para testar. Cancele quando quiser.</p>
       <p class="assinatura">Você constrói. A gente mostra por onde.</p>
     </div>
-    <div class="peca" aria-hidden="true">
-      <div class="sessao">
-        <span class="er">Obra · hoje</span>
-        <div class="tit">Estequiometria</div>
-        <div class="sub">12 questões · quatro já fecham o dia</div>
-        <span class="botao claro">Começar agora</span>
+    <div class="fone">
+      <img src="telas/hoje.webp" width="780" height="1688" alt="Tela Hoje do Trilho: a sessão do dia pronta, o simulado e os assuntos em que você está travando">
+    </div>
+  </div>
+</section>
+
+<section id="evolucao">
+  <div class="w">
+    <div class="kicker">Sua evolução</div>
+    <div class="cabeca">
+      <h2>Você vê o quanto já andou</h2>
+      <p style="margin-top:10px;color:var(--tinta2);max-width:640px">Estudar sem enxergar o avanço cansa. No Trilho, cada sessão aparece: nos assuntos que você abriu, nos que superou e nos erros que deixou para trás.</p>
+    </div>
+    <div class="vitrine">
+      <figure>
+        <div class="fone"><img src="telas/evolucao.webp" width="780" height="1688" loading="lazy" alt="Tela Sua evolução: gráfico de assuntos vistos e superados, semana a semana"></div>
+        <figcaption><b>Semana a semana</b><span>Quantos assuntos você já viu e quantos já superou, desde o primeiro dia.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="fone"><img src="telas/mapa.webp" width="780" height="1688" loading="lazy" alt="Tela Seu mapa: um anel por área e um dormente por assunto do ENEM"></div>
+        <figcaption><b>O mapa dos assuntos</b><span>Cada assunto do ENEM no seu lugar: ainda não visto, em treino, em revisão ou superado.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="fone"><img src="telas/erros.webp" width="780" height="1688" loading="lazy" alt="Tela Seus erros: o erro mais frequente, com nome, e os outros padrões"></div>
+        <figcaption><b>Seus erros, com nome</b><span>O erro que mais se repete nas suas respostas, e os que você já superou.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="fone"><img src="telas/curso.webp" width="780" height="1688" loading="lazy" alt="Tela Qual curso você quer: o curso escolhido e a nota de corte do Sisu"></div>
+        <figcaption><b>O curso que você quer</b><span>A nota de corte do Sisu para o curso e a universidade que você escolheu.</span></figcaption>
+      </figure>
+    </div>
+    <p class="nota-telas">Telas do app, com dados de exemplo.</p>
+  </div>
+</section>
+
+<section class="branco">
+  <div class="w">
+    <div class="correcao">
+      <div>
+        <div class="kicker">A correção, de perto</div>
+        <div class="cabeca"><h2>O que você vê quando erra</h2></div>
+        <ul class="lista">
+          <li><strong>A alternativa que você marcou</strong>, com o erro nomeado, em uma frase.</li>
+          <li><strong>Como pensar a questão</strong>, em três passos.</li>
+          <li><strong>Por que cada alternativa está certa ou errada.</strong> As cinco.</li>
+          <li><strong>A chave do método:</strong> o que levar desta questão para a próxima do mesmo tipo.</li>
+        </ul>
+        <p style="margin-top:24px;color:var(--tinta2)">As resoluções foram escritas e revisadas por pessoas, uma a uma. Nenhuma é gerada por inteligência artificial na hora.</p>
       </div>
-      <div class="semana">
-        <div class="linha"><b>Sua semana</b><span class="er">2 dias cumpridos</span></div>
-        <div class="dias">
-          <span class="dia cumprido"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-          <span class="dia cumprido"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-          <span class="dia parcial"></span>
-          <span class="dia hoje"></span>
-          <span class="dia futuro"></span>
-          <span class="dia futuro"></span>
-          <span class="dia futuro"></span>
+      <div>
+        <div class="fone">
+          <video autoplay muted loop playsinline preload="metadata" poster="telas/correcao.webp" width="600" height="1298" aria-label="Animação da tela de correção: o aluno marca a B, vê Quase, a resposta é C, e a explicação de cada alternativa"><source src="telas/correcao.mp4" type="video/mp4"></video>
         </div>
-        <div class="legenda">Dia cheio é dia cumprido. Meio dia também conta.</div>
+        <p class="nota-telas">Tela do app, com uma questão do acervo.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="branco">
+<section>
   <div class="w estreito prosa">
     <div class="kicker">O problema</div>
     <div class="cabeca"><h2>Você não estudou pouco. Estudou sem saber o que faltava.</h2></div>
@@ -298,6 +373,46 @@
     <p class="frase">Saber qual era a certa corrige aquela questão. Saber por que você marcou a errada corrige o raciocínio que vai errar a próxima.</p>
     <p>No Trilho, cada alternativa errada de cada questão foi analisada por uma pessoa e ligada ao erro que costuma levar até ela. É o <strong>erro nomeado</strong>. Quando você marca a B, o app não responde só "era a D". Ele mostra o raciocínio que costuma levar à B e onde ele se desvia.</p>
     <p>É como revisar a prova com o professor do lado, questão por questão, em vez de receber só a nota.</p>
+  </div>
+</section>
+
+<section class="branco" id="comparacao">
+  <div class="w">
+    <div class="kicker">A diferença</div>
+    <div class="cabeca"><h2>O que cada jeito de estudar te diz</h2></div>
+    <div class="compara">
+      <div class="topo-c"><div></div><div>Só com o gabarito</div><div>Com listas e cursinho</div><div>Com o Trilho</div></div>
+      <div class="linha">
+        <div class="oque">Quando você erra</div>
+        <div class="cel"><b>Só com o gabarito</b>Mostra a letra certa.</div>
+        <div class="cel"><b>Com listas e cursinho</b>Mostra a resolução da questão.</div>
+        <div class="cel trilho"><b>Com o Trilho</b>Nomeia o erro da alternativa que você marcou.</div>
+      </div>
+      <div class="linha">
+        <div class="oque">O que treinar amanhã</div>
+        <div class="cel"><b>Só com o gabarito</b>Você decide, no escuro.</div>
+        <div class="cel"><b>Com listas e cursinho</b>A ordem da apostila decide.</div>
+        <div class="cel trilho"><b>Com o Trilho</b>A sessão do dia sai dos seus erros.</div>
+      </div>
+      <div class="linha">
+        <div class="oque">O erro que se repete</div>
+        <div class="cel"><b>Só com o gabarito</b>Passa despercebido.</div>
+        <div class="cel"><b>Com listas e cursinho</b>Só aparece se você anotar.</div>
+        <div class="cel trilho"><b>Com o Trilho</b>Fica no seu caderno de erros, com a contagem.</div>
+      </div>
+      <div class="linha">
+        <div class="oque">O quanto você evoluiu</div>
+        <div class="cel"><b>Só com o gabarito</b>A contagem de acertos do dia.</div>
+        <div class="cel"><b>Com listas e cursinho</b>A nota do último simulado.</div>
+        <div class="cel trilho"><b>Com o Trilho</b>Assuntos vistos e superados, semana a semana.</div>
+      </div>
+      <div class="linha">
+        <div class="oque">O curso que você quer</div>
+        <div class="cel"><b>Só com o gabarito</b>Não entra na conta.</div>
+        <div class="cel"><b>Com listas e cursinho</b>Depende de onde você estuda.</div>
+        <div class="cel trilho"><b>Com o Trilho</b>A nota de corte à vista, e as áreas pesadas pelo Sisu.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -345,40 +460,6 @@
   </div>
 </section>
 
-<section class="branco">
-  <div class="w">
-    <div class="correcao">
-      <div>
-        <div class="kicker">A correção, de perto</div>
-        <div class="cabeca"><h2>O que você vê quando erra</h2></div>
-        <ul class="lista">
-          <li><strong>A alternativa que você marcou</strong>, com o erro nomeado, em uma frase.</li>
-          <li><strong>Como pensar a questão</strong>, em três passos.</li>
-          <li><strong>Por que cada alternativa está certa ou errada.</strong> As cinco.</li>
-          <li><strong>A chave do método:</strong> o que levar desta questão para a próxima do mesmo tipo.</li>
-        </ul>
-        <p style="margin-top:24px;color:var(--tinta2)">As resoluções foram escritas e revisadas por pessoas, uma a uma. Nenhuma é gerada por inteligência artificial na hora.</p>
-      </div>
-      <div class="tela" aria-label="Exemplo ilustrativo da tela de correção">
-        <span class="er">Exemplo ilustrativo</span>
-        <div class="alt"><span class="letra">A</span><div><b>2 kg</b></div></div>
-        <div class="alt errada"><span class="letra">B</span><div><b>3 kg</b><small>sua marcação</small></div></div>
-        <div class="alt correta"><span class="letra">C</span><div><b>6 kg</b><small>a resposta</small></div></div>
-        <div class="nomeado">
-          <span class="er">Erro nomeado</span>
-          <div class="tit">Usar a massa molar do H, não a do H₂</div>
-          <div class="sub">Esse erro costuma acontecer quando a conta parte do átomo e a equação pede a molécula.</div>
-        </div>
-        <div class="vencida">
-          <span class="er">Erro vencido</span>
-          <div class="tit">Inverter a proporção da equação</div>
-          <div class="sub">pegou você na terça · hoje, não</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section>
   <div class="w">
     <div class="kicker">O que tem dentro</div>
@@ -405,8 +486,8 @@
         <p>Uma tela reúne os erros nomeados que mais se repetem nas suas respostas.</p>
       </article>
       <article class="bloco">
-        <h3>Sua evolução por área</h3>
-        <p>O app mostra a ordem: qual área está mais frágil, qual vem depois, o que subiu e o que caiu. Ele não mostra percentual de domínio, porque essa estimativa tem margem de erro medida. O dado confiável é a ordem.</p>
+        <h3>Sua evolução, semana a semana</h3>
+        <p>A aba Resultados mostra o gráfico dos assuntos que você já viu e dos que já superou, semana a semana, e um mapa com o estado de cada assunto. Assunto superado é o que você acertou no treino e de novo na revisão, dias depois. O app não mostra nota de domínio inventada: mostra o que você fez.</p>
       </article>
       <article class="bloco">
         <h3>No celular, pelo navegador</h3>
@@ -522,13 +603,14 @@
       <span class="selo">Preço de lançamento</span>
       <h2 style="margin-top:16px;font-size:30px">Assinatura do Trilho</h2>
       <div class="preco">R$ 29,90 <small>por mês</small></div>
+      <p class="pordia">Menos de R$ 1 por dia.</p>
       <ul class="lista">
         <li>O Método das Quatro Voltas, da Sondagem à Vistoria</li>
         <li>Mais de 2 mil questões oficiais, dos últimos 12 anos do ENEM, com resolução escrita e erro nomeado</li>
         <li>A sessão do dia, pronta, com meta mínima</li>
         <li>Revisão espaçada do que você errou</li>
         <li>Um simulado por mês e o seu curso como alvo</li>
-        <li>Evolução por área e erros recorrentes</li>
+        <li>Sua evolução semana a semana, o mapa dos assuntos e os erros recorrentes</li>
         <li>Ponto Cego: uma redação corrigida por semana</li>
       </ul>
       <a class="botao js-checkout" href="#oferta">Assinar o Trilho</a>
