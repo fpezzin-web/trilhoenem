@@ -87,15 +87,25 @@
   .vitrine figcaption b { display: block; font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: -0.03em; }
   .vitrine figcaption span { display: block; font-size: 13.5px; color: var(--tinta2); margin-top: 4px; line-height: 1.45; }
 
-  /* A comparação (11/10/2026). No celular cada linha é um cartão com três respostas; em tela
-     larga vira tabela de quatro colunas. */
-  .compara { display: grid; gap: 12px; }
-  .compara .linha { background: var(--card); border: 1px solid var(--linha); border-radius: 16px; padding: 16px; }
-  .compara .oque { font-family: var(--display); font-weight: 800; font-size: 17px; letter-spacing: -0.03em; margin-bottom: 10px; }
-  .compara .cel { font-size: 14px; color: var(--tinta2); padding: 7px 0; border-top: 1px solid var(--linha); }
-  .compara .cel b { display: block; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta3); margin-bottom: 2px; }
-  .compara .cel.trilho { color: var(--tinta); font-weight: 600; }
-  .compara .cel.trilho b { color: var(--roxo); }
+  /* No celular (12/10/2026): a pergunta no alto, os dois jeitos comuns lado a lado, apagados
+     e com um X, e a resposta do Trilho embaixo, em bloco roxo cheio. É o mesmo contraste da
+     coluna destacada da tabela de tela larga, que o cartão em lista não tinha. */
+  .compara { display: grid; gap: 16px; }
+  .compara .linha { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: var(--card);
+    border: 1px solid var(--linha); border-radius: 20px; padding: 18px 14px 14px; box-shadow: 0 6px 18px rgba(23, 18, 37, .05); }
+  .compara .oque { grid-column: 1 / -1; font-family: var(--display); font-weight: 800; font-size: 22px;
+    letter-spacing: -0.035em; line-height: 1.1; margin: 0 4px 8px; }
+  .compara .cel { position: relative; font-size: 14px; line-height: 1.35; color: var(--tinta2); background: var(--bg);
+    border-radius: 14px; padding: 12px 12px 14px; }
+  .compara .cel b { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 9.5px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--tinta3); margin-bottom: 6px; }
+  .compara .cel b::before { content: "✕"; flex: none; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center;
+    background: #E3DFEE; color: var(--tinta3); font-family: var(--texto); font-size: 10px; letter-spacing: 0; }
+  .compara .cel.trilho { grid-column: 1 / -1; background: var(--roxo); color: #fff; font-family: var(--display); font-weight: 800;
+    font-size: 19px; letter-spacing: -0.03em; line-height: 1.2; padding: 16px 16px 18px; border-radius: 16px;
+    box-shadow: 0 10px 24px rgba(91, 63, 216, .28); }
+  .compara .cel.trilho b { color: var(--lilas); margin-bottom: 8px; }
+  .compara .cel.trilho b::before { content: "✓"; background: var(--verde); color: #063D2B; font-weight: 800; font-size: 11px; }
   .compara .topo-c { display: none; }
   .fone video { display: block; width: 100%; height: auto; aspect-ratio: 390 / 844; border-radius: 26px; background: var(--bg); object-fit: cover; }
   .pordia { font-size: 14px; color: var(--tinta2); margin: 2px 0 0; }
@@ -247,14 +257,17 @@
     .vitrine .fone { max-width: 240px; }
     .abertura .fone { max-width: 320px; }
     .compara { gap: 0; background: var(--card); border: 1px solid var(--linha); border-radius: 20px; overflow: hidden; }
-    .compara .linha, .compara .topo-c { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1.25fr; border: 0; border-radius: 0; padding: 0; background: none; }
+    .compara .linha, .compara .topo-c { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1.25fr; border: 0; border-radius: 0; padding: 0; background: none; gap: 0; box-shadow: none; }
     .compara .linha { border-top: 1px solid var(--linha); }
     .compara .topo-c > div { padding: 16px 18px; font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta3); }
     .compara .topo-c > div:last-child { color: var(--roxo); background: var(--roxoL); }
     .compara .oque { margin: 0; padding: 18px; font-size: 16px; }
     .compara .cel { border: 0; padding: 18px; }
     .compara .cel b { display: none; }
-    .compara .cel.trilho { background: var(--roxoL); }
+    .compara .oque { grid-column: auto; line-height: 1.25; }
+    .compara .cel { background: none; border-radius: 0; font-size: 14.5px; }
+    .compara .cel.trilho { grid-column: auto; background: var(--roxoL); color: var(--tinta); font-family: var(--texto);
+      font-weight: 600; font-size: 14.5px; letter-spacing: 0; line-height: 1.5; padding: 18px; border-radius: 0; box-shadow: none; }
     .g2, .voltas { grid-template-columns: 1fr 1fr; }
     .g3 { grid-template-columns: repeat(3, 1fr); }
     .correcao { grid-template-columns: 1.05fr .95fr; gap: 56px; }
