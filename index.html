@@ -88,6 +88,9 @@
   .vitrine figcaption { margin-top: 16px; text-align: center; }
   .vitrine figcaption b { display: block; font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: -0.03em; }
   .vitrine figcaption span { display: block; font-size: 13.5px; color: var(--tinta2); margin-top: 4px; line-height: 1.45; }
+  /* O Ponto Cego (13/10/2026): o texto fica na coluna estreita e as telas ocupam a largura
+     toda. Por isso a seção tem três blocos .w em vez de um, e este é o espaço entre eles. */
+  #ponto-cego .w + .w { margin-top: 34px; }
 
   /* No celular (12/10/2026): a pergunta no alto, os dois jeitos comuns lado a lado, apagados
      e com um X, e a resposta do Trilho embaixo, em bloco roxo cheio. É o mesmo contraste da
@@ -542,7 +545,7 @@
       </div>
       <div>
         <h3>Veja a distância</h3>
-        <p>O app coloca a sua nota estimada ao lado do que o curso exige. A conta inclui a redação, com o peso que o curso dá a ela.</p>
+        <p>O app coloca a sua nota estimada ao lado do que o curso exige.</p>
       </div>
     </div>
     <div class="faixa" aria-hidden="true">
@@ -558,16 +561,39 @@
     <div class="kicker">Redação</div>
     <div class="cabeca"><h2>Ponto Cego: o que você não enxerga no próprio texto</h2></div>
     <p>A redação entra no mesmo ciclo. O seu texto faz o papel do gabarito.</p>
-    <p>Você envia uma redação por semana, por foto ou por texto. Em até 24 horas, ela volta com a nota de cada uma das cinco competências do ENEM, os trechos do seu texto que justificam cada nota e a <strong>lacuna nomeada</strong>: tese que não se sustenta, repertório que não cumpre função no argumento, proposta de intervenção sem agente. Junto vem o que treinar antes da próxima.</p>
+    <p>Você envia uma redação por semana, por foto, PDF ou texto. Em até 24 horas, ela volta com a nota de cada uma das cinco competências do ENEM, os trechos do seu texto que justificam cada nota e a <strong>lacuna nomeada</strong>: tese que não se sustenta, repertório que não cumpre função no argumento, proposta de intervenção sem agente. Junto vem o que treinar antes da próxima.</p>
     <p class="frase">O mercado pontua o texto pronto. O Ponto Cego diz o que faltou nele.</p>
+  </div>
+  <div class="w">
+    <div class="vitrine">
+      <figure>
+        <div class="fone"><img src="telas/redacao-nota.webp" width="780" height="1688" loading="lazy" alt="Prévia da tela da correção: nota 680 de 1000, o ponto cego da redação e a lista das cinco competências"></div>
+        <figcaption><b>A nota e o ponto cego</b><span>As cinco competências somadas e, logo abaixo, a lacuna que mais pesou no seu texto.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="fone"><img src="telas/redacao-trecho.webp" width="780" height="1688" loading="lazy" alt="Prévia de uma competência aberta: o nível atingido, o comentário do corretor e dois trechos da redação com o que faltou em cada um"></div>
+        <figcaption><b>O trecho que justifica</b><span>Cada apontamento cita o que você escreveu e diz o que faltou ali.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="fone"><img src="telas/redacao-proposta.webp" width="780" height="1688" loading="lazy" alt="Prévia da competência da proposta de intervenção: ação, agente e modo marcados como presentes; efeito e detalhamento como ausentes"></div>
+        <figcaption><b>A proposta, por elemento</b><span>Ação, agente, meio, efeito e detalhamento: o que está no texto e o que faltou.</span></figcaption>
+      </figure>
+      <figure>
+        <div class="fone"><img src="telas/redacao-evolucao.webp" width="780" height="1688" loading="lazy" alt="Prévia da tela Suas redações: a nota de cada competência em quatro redações, lado a lado, e a lista das redações corrigidas"></div>
+        <figcaption><b>Redação a redação</b><span>A nota de cada competência nas suas últimas redações, lado a lado.</span></figcaption>
+      </figure>
+    </div>
+    <p class="nota-telas">Prévia das telas do Ponto Cego, com dados de exemplo.</p>
+  </div>
+  <div class="w estreito">
     <div class="grade g2">
       <div class="bloco">
         <h3>Como a correção é feita</h3>
-        <p>Por inteligência artificial, seguindo a grade de correção do ENEM. Cada apontamento cita um trecho que está de fato na sua redação.</p>
+        <p>Sua redação é corrigida por um corretor da equipe, com apoio de IA, seguindo a grade de correção do ENEM. Cada apontamento cita um trecho que está de fato na sua redação.</p>
       </div>
       <div class="bloco">
-        <h3>Em fase de testes</h3>
-        <p>O Ponto Cego é novo e continua sendo ajustado. A nota é uma estimativa para orientar o seu treino e pode ser diferente da nota que a banca do ENEM daria.</p>
+        <h3>A nota orienta o treino</h3>
+        <p>Ela pode ser diferente da nota que a banca do ENEM daria.</p>
       </div>
     </div>
   </div>
@@ -680,9 +706,9 @@
     <details><summary>As questões são do ENEM mesmo?</summary>
       <p>São. Todas vêm de provas oficiais do ENEM, com o texto conferido contra o caderno original.</p></details>
     <details><summary>As resoluções são feitas por inteligência artificial?</summary>
-      <p>Não. Foram escritas e revisadas por pessoas. A ordem do que você treina também não é decidida por IA: é um cálculo com regras fixas, a partir das suas respostas. A exceção é a correção de redação do Ponto Cego, que é feita por IA.</p></details>
+      <p>Não. Foram escritas e revisadas por pessoas. A ordem do que você treina também não é decidida por IA: é um cálculo com regras fixas, a partir das suas respostas. A redação do Ponto Cego é corrigida por um corretor da equipe, com apoio de IA.</p></details>
     <details><summary>A nota da redação é a mesma que eu tiraria no ENEM?</summary>
-      <p>Não necessariamente. O Ponto Cego está em fase de testes: a nota é uma estimativa feita por inteligência artificial com a grade do ENEM. Ela serve para mostrar em qual competência você perde mais ponto, e pode ser diferente da nota da banca.</p></details>
+      <p>Não necessariamente. A redação é corrigida por um corretor da equipe, com apoio de IA, pela grade do ENEM. A nota serve para mostrar em qual competência você perde mais ponto, e pode ser diferente da nota da banca.</p></details>
     <details><summary>Por que o app não mostra meu percentual de domínio?</summary>
       <p>Porque esse número tem margem de erro, e um número errado em que você confia é pior que número nenhum. O que o app mostra com segurança é a ordem: o que está mais frágil e o que vem depois.</p></details>
     <details><summary>E se eu faltar um dia?</summary>
