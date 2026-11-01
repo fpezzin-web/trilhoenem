@@ -751,10 +751,15 @@
 </div>
 
 <script>
-  // Link de pagamento da Hotmart. Vazio, os botões levam à seção da oferta.
-  var CHECKOUT_URL = '';
+  // Link de pagamento da Hotmart, em todos os botões marcados com js-checkout. Vazio, eles
+  // levam à seção da oferta.
+  var CHECKOUT_URL = 'https://pay.hotmart.com/N107612080E';
   if (CHECKOUT_URL) {
-    document.querySelectorAll('#oferta .js-checkout').forEach(function (a) { a.href = CHECKOUT_URL; });
+    document.querySelectorAll('.js-checkout').forEach(function (a) {
+      a.href = CHECKOUT_URL;
+      a.target = '_blank';
+      a.rel = 'noopener';
+    });
   }
 </script>
 </body>
