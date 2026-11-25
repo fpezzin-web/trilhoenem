@@ -312,7 +312,7 @@
     </a>
     <nav class="acoes" aria-label="Acesso">
       <a class="entrar login" href="https://app.trilhoenem.com.br/">Login</a>
-      <a class="entrar" href="#oferta">Assinar</a>
+      <a data-evento="assinar_topo" class="entrar" href="#oferta">Assinar</a>
     </nav>
   </div>
 </header>
@@ -325,7 +325,7 @@
       <div class="kicker">Treino para o ENEM</div>
       <h1>Você quer o curso que escolheu. <em>Não o que sobrou na nota de corte.</em></h1>
       <p class="lede">Diga o curso e a universidade. O Trilho mostra a nota de corte, usa os pesos que aquele curso dá a cada área no Sisu, nomeia o erro por trás de cada alternativa que você marca errado e monta o que você treina hoje, com questões oficiais do ENEM.</p>
-      <a class="botao js-checkout" href="#oferta">Assinar o Trilho</a>
+      <a data-evento="assinar_abertura" class="botao js-checkout" href="#oferta">Assinar o Trilho</a>
       <p class="micro">R$ 29,90 por mês. 7 dias para testar. Cancele quando quiser.</p>
       <p class="assinatura">Você constrói. A gente mostra por onde.</p>
     </div>
@@ -679,7 +679,7 @@
         <li>Sua evolução semana a semana, o mapa dos assuntos e os erros recorrentes</li>
         <li>Ponto Cego: uma redação corrigida por semana</li>
       </ul>
-      <a class="botao js-checkout" href="#oferta">Assinar o Trilho</a>
+      <a data-evento="assinar_oferta" class="botao js-checkout" href="#oferta">Assinar o Trilho</a>
       <p class="micro" style="text-align:center">Renova todo mês. Cancele quando quiser: o acesso continua até o fim do mês já pago.</p>
       <p class="miudo">Preço de lançamento, válido para assinaturas feitas enquanto esta oferta estiver no ar. Quem assina agora mantém os R$ 29,90 enquanto a assinatura estiver ativa.</p>
     </div>
@@ -691,7 +691,7 @@
     <div class="duvida">
       <h3>Ficou com alguma dúvida?</h3>
       <p>Fale com a gente antes de assinar.</p>
-      <a class="botao contorno" href="https://wa.me/5527999507096?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Trilho." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      <a data-evento="whatsapp" class="botao contorno" href="https://wa.me/5527999507096?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Trilho." target="_blank" rel="noopener">Chamar no WhatsApp</a>
     </div>
   </div>
 </section>
@@ -741,7 +741,7 @@
     <h2>Chegue à prova sabendo o que você errava e o que já corrigiu</h2>
     <p style="margin-top:20px">Os meses daqui até o ENEM podem ser uma repetição do ano passado com mais horas, ou podem começar pelas respostas que você já deu.</p>
     <p>A primeira volta é a Sondagem. O dia de hoje fecha com quatro questões.</p>
-    <a class="botao claro js-checkout" href="#oferta">Assinar o Trilho</a>
+    <a data-evento="assinar_fechamento" class="botao claro js-checkout" href="#oferta">Assinar o Trilho</a>
   </div>
 </section>
 
@@ -758,7 +758,7 @@
 
 <div class="barra">
   <div class="valor"><strong>R$ 29,90 por mês</strong>7 dias para testar</div>
-  <a class="botao js-checkout" href="#oferta">Assinar</a>
+  <a data-evento="assinar_barra" class="botao js-checkout" href="#oferta">Assinar</a>
 </div>
 
 <script>
@@ -772,6 +772,18 @@
       a.rel = 'noopener';
     });
   }
+
+  // Eventos do Clarity. Todo botão de assinar manda "assinar" e o nome do lugar dele
+  // (assinar_topo, _abertura, _oferta, _fechamento, _barra); o do WhatsApp manda "whatsapp".
+  // Com o mascaramento Rígido o painel não mostra o texto do botão tocado, e o Clique de
+  // saída junta Hotmart, WhatsApp e Login: sem isto, não se sabe qual botão foi.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('[data-evento]') : null;
+    if (!a || typeof window.clarity !== 'function') return;
+    var nome = a.getAttribute('data-evento');
+    if (nome.indexOf('assinar_') === 0) window.clarity('event', 'assinar');
+    window.clarity('event', nome);
+  });
 </script>
 </body>
 </html>
